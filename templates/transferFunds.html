@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Funds</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <p>Date: {{ transaction.date }}</p>
+    <p>Amount: {{ transaction.amount }}</p>
+    <p>Account: {{ transaction.account }}</p>
+
+{% endif %}
+</body>
+</html>
+{% endblock %}

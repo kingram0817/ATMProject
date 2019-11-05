@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registation</title>
+</head>
+<body>
+    Register Account
+<br/><br/>
+<form method = "POST" action="{% url 'register' %}">
+    {% csrf_token %}
+
+    {% if form.errors %}
+        <p>Your form has errors...</p>
+    {% endif %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Register" class="btn btn-secondary">
+
+</form>
+
+</body>
+</html>
+{% endblock %}

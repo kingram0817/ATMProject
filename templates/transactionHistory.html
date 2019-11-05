@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction History</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <p>Action: {{ transaction.action }}</p>
+    <p>Date: {{ transaction.date }}</p>
+    <p>Amount: {{ transaction.amount }}</p>
+
+{% endif %}
+</body>
+</html>
+{% endblock %}

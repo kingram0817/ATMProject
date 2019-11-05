@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .atm-container {
+            text-align: center;
+        }
+
+        .atm-container div {
+            margin: 2%;
+        }
+
+        .atm-title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="atm-container">
+        <div class="atm-title">Welcome To The ATM</div>
+        <div><a class="btn btn-primary" href="login.html">Login</a></div>
+        <div><a class="btn btn-primary" href="register.html">New Customer</a></div>
+    </div>
+</body>
+</html>
+{% endblock %}
