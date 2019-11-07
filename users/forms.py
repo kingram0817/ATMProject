@@ -1,10 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Transaction
+
+
+def setTransactions():
+    Transaction.amount = '$1000'
 
 
 class SignUpForm(UserCreationForm):
-    accountNumber = forms.CharField(max_length=16)
+    # accountNumber = forms.CharField(max_length=16)
     username = forms.CharField(max_length=50)
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
@@ -14,6 +18,7 @@ class SignUpForm(UserCreationForm):
     state = forms.CharField(max_length=2)
     zipCode = forms.CharField(max_length=5)
     phoneNumber = forms.CharField(max_length=10)
+    setTransactions()
 
     class Meta:
         model = CustomUser

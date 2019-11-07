@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
 from .forms import SignUpForm
+from .models import Transaction
 
 
 def home(request):
@@ -14,7 +15,8 @@ def about(request):
 
 
 def myAccount(request):
-    return render(request, 'myAccount.html', {})
+    all_items = Transaction.amount
+    return render(request, 'myAccount.html', {'all_items': all_items})
 
 
 def loginUser(request):
@@ -54,3 +56,16 @@ def registerUser(request):
         form = SignUpForm()
     context = {'form': form}
     return render(request, 'register.html', context)
+
+
+def transactionHistory(request):
+    all_items = Transaction.amount
+    return render(request, 'transactionHistory.html', {'all_items': all_items})
+
+
+def transferFunds(request):
+    return render(request, 'transferFunds.html', context)
+
+
+def withdrawFunds(request):
+    return render(request, 'withdrawFunds.html', context)

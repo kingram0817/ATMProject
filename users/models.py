@@ -16,3 +16,24 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.accountNumber
+
+
+class Transaction(models.Model):
+    action = models.CharField(max_length=50)
+    date = models.DateField(max_length=50)
+    amount = models.CharField(max_length=50)
+    account = models.CharField(max_length=50)
+
+
+class ATM_Card(models.Model):
+
+    atmCardNumber = models.CharField(max_length=50, default='')
+    accountNumber = models.CharField(max_length=50, default='')
+    pin = models.CharField(max_length=50, default='')
+    name = models.CharField(max_length=50, default='')
+    #dateOfIssue
+    #expirationDate
+    #address
+    #twoFactorAuthenticationStatus
+    #phoneNumber
+    #cardStatus

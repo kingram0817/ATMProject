@@ -9,4 +9,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name="logout"),
     path('myAccount.html', views.myAccount, name="myAccount"),
     path('register.html', views.registerUser, name="register"),
+    path('transactionHistory.html', views.transactionHistory, name="transactionHistory"),
+    path('transferFunds.html', views.transferFunds, name="transferFunds"),
+    path('withdrawFunds.html', views.withdrawFunds, name="withdrawFunds"),
 ]

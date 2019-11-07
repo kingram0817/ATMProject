@@ -9,6 +9,7 @@
 </head>
 <body>
 {% if user.is_authenticated %}
+    <p>Action: {{ all_items }}</p>
     <p>Action: {{ transaction.action }}</p>
     <p>Date: {{ transaction.date }}</p>
     <p>Amount: {{ transaction.amount }}</p>
