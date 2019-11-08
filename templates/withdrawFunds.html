@@ -6,11 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Withdraw Funds</title>
+
+    <style>
+        .atm-title {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+<div class="atm-title">Withdraw Funds</div>
+
 {% if user.is_authenticated %}
-    <p>Date: {{ transaction.date }}</p>
-    <p>Amount: {{ transaction.amount }}</p>
+
+    <p>Amount Transferred: {{ CashWithdrawal.amountTransferred }}</p>
+    <p>Denomination: {{ CashWithdrawal.denomination }}</p>
+    <p>Current Balance: {{ CashWithdrawal.currentBalance }}</p>
 
 {% endif %}
 </body>

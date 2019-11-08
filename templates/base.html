@@ -25,10 +25,10 @@
                  Options
                  </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cash Transfer</a>
-                    <a class="dropdown-item" href="#">Cash Withdrawal</a>
+                    <a class="dropdown-item" href={% url 'transferFunds' %}>Cash Transfer</a>
+                    <a class="dropdown-item" href={% url 'withdrawFunds' %}>Cash Withdrawal</a>
                     <a class="dropdown-item" href="#">Balance Enquiry</a>
-                    <a class="dropdown-item" href="/transactionHistory.html">Transaction History</a>
+                    <a class="dropdown-item" href={% url 'transactionHistory' %}>Transaction History</a>
                     <a class="dropdown-item" href="#">Change Pin Number</a>
                     <a class="dropdown-item" href="#">Change Phone Number</a>
 
