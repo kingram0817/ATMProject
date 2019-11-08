@@ -6,12 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Transfer Funds</title>
+
+    <style>
+        .atm-title {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+<div class="atm-title">Transfer Funds</div>
+
 {% if user.is_authenticated %}
-    <p>Date: {{ transaction.date }}</p>
-    <p>Amount: {{ transaction.amount }}</p>
-    <p>Account: {{ transaction.account }}</p>
+
+    <p>Beneficiary Account Number: {{ CashTransfer.beneficiaryAccountNumber }}</p>
+    <p>Beneficiary Name: {{ CashTransfer.beneficiaryName }}</p>
+    <p>Amount Transferred: {{ CashTransfer.amountTransferred }}</p>
 
 {% endif %}
 </body>

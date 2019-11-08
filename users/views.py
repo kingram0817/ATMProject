@@ -64,8 +64,8 @@ def transactionHistory(request):
 
 
 def transferFunds(request):
-    return render(request, 'transferFunds.html', context)
+    return render(request, 'transferFunds.html', {})
 
 
 def withdrawFunds(request):
-    return render(request, 'withdrawFunds.html', context)
+    return render(request, 'withdrawFunds.html', {})

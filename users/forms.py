@@ -24,3 +24,9 @@ class SignUpForm(UserCreationForm):
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'address', 'city', 'state',
                   'zipCode', 'phoneNumber',)
+
+
+#class CashTransferForm(models.Model):
+    #beneficiaryAccountNumber = forms.CharField(max_length=50)
+    #beneficiaryName = forms.CharField(max_length=50)
+    #amountTransferred = forms.CharField(max_length=999999999999)
