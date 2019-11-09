@@ -15,7 +15,7 @@ def about(request):
 
 
 def myAccount(request):
-    all_items = Transaction.amount
+    all_items = Transaction.objects
     return render(request, 'myAccount.html', {'all_items': all_items})
 
 
@@ -59,7 +59,7 @@ def registerUser(request):
 
 
 def transactionHistory(request):
-    all_items = Transaction.amount
+    all_items = Transaction.objects
     return render(request, 'transactionHistory.html', {'all_items': all_items})
 
 
