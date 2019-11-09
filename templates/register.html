@@ -5,23 +5,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registation</title>
+    <title>Registration</title>
 </head>
 <body>
-    Register Account
+<h2 class="text-center">Register Account</h2>
 <br/><br/>
-<form method = "POST" action="{% url 'register' %}">
-    {% csrf_token %}
+<div class="col-md-6 offset-md-3">
+    <form method = "POST" action="{% url 'register' %}">
+        {% csrf_token %}
 
-    {% if form.errors %}
-        <p>Your form has errors...</p>
-    {% endif %}
-    {{ form.as_p }}
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissable" role="alert">
+                    <button class="close" data-dismiss="alert">
+                        <small><sup>x</sup></small>
+                    </button>
+                <p>Your form has errors...</p>
+                {% for field in form %}
+                    {% if field.errors %}
+                        {{ field.errors }}
+                    {% endif %}
 
-    <input type="submit" value="Register" class="btn btn-secondary">
+                {% endfor %}
 
-</form>
 
+            </div>
+
+        {% endif %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Register" class="btn btn-secondary">
+
+    </form>
+</div>
 </body>
 </html>
 {% endblock %}
