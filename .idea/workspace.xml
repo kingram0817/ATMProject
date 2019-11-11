@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0c34b94-bf0a-4998-afff-e53c24b6c92b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/transferFunds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/transferFunds.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/withdrawFunds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/withdrawFunds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/myAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/myAccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/transactionHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/transactionHistory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
@@ -52,8 +50,9 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -76,9 +75,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="atmProject1.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Outcast\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
@@ -108,6 +107,10 @@
       <workItem from="1573078446043" duration="153000" />
       <workItem from="1573149973523" duration="2225000" />
       <workItem from="1573160094637" duration="2884000" />
+      <workItem from="1573493356741" duration="3278000" />
+      <workItem from="1573499673733" duration="1128000" />
+      <workItem from="1573500871707" duration="3033000" />
+      <workItem from="1573506159436" duration="937000" />
     </task>
     <servers />
   </component>
