@@ -3,7 +3,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    accountNumber = models.CharField(max_length=16, default='8888000011112222')
+    accountNumber = models.CharField(max_length=16, default='')
     username = models.CharField(max_length=50, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, default='')
@@ -15,22 +15,22 @@ class CustomUser(AbstractUser):
     phoneNumber = models.CharField(max_length=10, default='123456789')
 
     def __str__(self):
-        return self.accountNumber
+        return self.last_name + " , " + self.first_name + " || " + str(self.accountNumber)
 
 
 class Transaction(models.Model):
-    transactionId = models.CharField(max_length=9999999999999, default='')
-    atmCardNumber = models.CharField(max_length=9999999999999, default='')
+    transactionId = models.CharField(max_length=9999999999999, primary_key=True)
+    atmCardNumber = models.ForeignKey('ATM_Card', on_delete=models.CASCADE)
     date = models.DateField(max_length=50, default='')
-    ATMachineUID = models.CharField(max_length=50, default='')
+    ATMachineUID = models.ForeignKey('ATMachine', on_delete=models.CASCADE)
     status = models.CharField(max_length=50, default='')
     responseCode = models.CharField(max_length=50, default='')
     transactionType = models.CharField(max_length=50, default='')
 
 
 class ATM_Card(models.Model):
-    atmCardNumber = models.CharField(max_length=50, default='')
-    accountNumber = models.CharField(max_length=50, default='')
+    atmCardNumber = models.CharField(max_length=50, primary_key=True)
+    accountNumber = models.ForeignKey('AccountExtension', on_delete=models.CASCADE)
     pin = models.CharField(max_length=50, default='')
     name = models.CharField(max_length=50, default='')
     dateOfIssue = models.CharField(max_length=50, default='')
@@ -67,8 +67,8 @@ class BalanceEnquiry(models.Model):
 
 
 class ATMachineRefill(models.Model):
-    refillId = models.CharField(max_length=9999999999999, default='')
-    ATMachineUID = models.CharField(max_length=9999999999999, default='')
+    refillId = models.CharField(max_length=9999999999999, primary_key=True)
+    ATMachineUID = models.ForeignKey('ATMachine', on_delete=models.CASCADE)
     amount = models.CharField(max_length=9999999999999, default='')
     atmBranch = models.CharField(max_length=9999999999999, default='')
     refillDate = models.DateField(max_length=9999999999999, default='')
@@ -76,7 +76,7 @@ class ATMachineRefill(models.Model):
 
 
 class ATMachine(models.Model):
-    ATMachineUID = models.CharField(max_length=9999999999999, default='')
+    ATMachineUID = models.CharField(max_length=9999999999999, primary_key=True)
     currentBalance = models.CharField(max_length=9999999999999, default='')
     location = models.CharField(max_length=9999999999999, default='')
     minimumBalance = models.CharField(max_length=9999999999999, default='')
@@ -86,7 +86,7 @@ class ATMachine(models.Model):
 
 
 class AccountExtension(models.Model):
-    accountNumber = models.CharField(max_length=9999999999999, default='')
+    accountNumber = models.CharField(max_length=9999999999999, primary_key=True)
     name = models.CharField(max_length=9999999999999, default='')
     phoneNumber = models.CharField(max_length=9999999999999, default='')
     balance = models.CharField(max_length=9999999999999, default='')

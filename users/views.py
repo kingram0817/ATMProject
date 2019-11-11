@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
 from .forms import SignUpForm
-from .models import Transaction
+from .models import Transaction, ATM_Card
 
 
 def home(request):
@@ -15,8 +15,8 @@ def about(request):
 
 
 def myAccount(request):
-    all_items = Transaction.objects
-    return render(request, 'myAccount.html', {'all_items': all_items})
+    accountN = ATM_Card.accountNumber
+    return render(request, 'myAccount.html', {'accountN': accountN})
 
 
 def loginUser(request):
@@ -59,8 +59,8 @@ def registerUser(request):
 
 
 def transactionHistory(request):
-    all_items = Transaction.objects
-    return render(request, 'transactionHistory.html', {'all_items': all_items})
+    allTransactionHistory = Transaction.objects.all
+    return render(request, 'transactionHistory.html', {'allTransactionHistory': allTransactionHistory})
 
 
 def transferFunds(request):
