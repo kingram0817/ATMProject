@@ -5,21 +5,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transaction History</title>
+    <title>Edit Account</title>
     <style>
         .atm-title {
             font-weight: bold;
         }
     </style>
 </head>
-<body>
-{% if user.is_authenticated %}
-<div class="atm-title">Transaction History</div>
+<div class="atm-title">Edit Account</div>
 <br/><br/>
 
+    {% if user.is_authenticated %}
 
 
-{% endif %}
+
+
+
+    {% endif %}
 </body>
 </html>
 {% endblock %}
