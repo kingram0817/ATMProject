@@ -10,19 +10,20 @@
     <style>
         .atm-title {
             font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 <div class="atm-title">Withdraw Funds</div>
 
-{% if user.is_authenticated %}
-
-    <p>Amount Transferred: {{ CashWithdrawal.amountTransferred }}</p>
-    <p>Denomination: {{ CashWithdrawal.denomination }}</p>
-    <p>Current Balance: {{ CashWithdrawal.currentBalance }}</p>
-
-{% endif %}
+<div class="col-md-6 offset-md-3">
+    <form action="{% url 'withdrawFunds' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
+</div>
 </body>
 </html>
 {% endblock %}

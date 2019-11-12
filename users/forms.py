@@ -46,7 +46,14 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ""
         self.fields['password2'].help_text = '<div class="form-text text-muted"><small>Enter the same password as before, for verification.</small></div>'
 
-# class CashTransferForm(models.Model):
-# beneficiaryAccountNumber = forms.CharField(max_length=50)
-# beneficiaryName = forms.CharField(max_length=50)
-# amountTransferred = forms.CharField(max_length=999999999999)
+
+class CashTransferForm(forms.Form):
+    beneficiaryAccountNumber = forms.CharField(label='', max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Account Number', 'style': 'margin-bottom:15px;'}))
+    beneficiaryName = forms.CharField(label='', max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name', 'style': 'margin-bottom:15px;'}))
+    amountTransferred = forms.CharField(label='', max_length=999999999999, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Transfer Amount', 'style': 'margin-bottom:15px;'}))
+
+
+class CashWithdrawalForm(forms.Form):
+    amountTransferred = forms.CharField(label='', max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Transfer Amount', 'style': 'margin-bottom:15px;'}))
+    denomination = forms.CharField(label='', max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Denomination', 'style': 'margin-bottom:15px;'}))
+    currentBalance = forms.CharField(label='', max_length=50, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Current Balance', 'style': 'margin-bottom:15px;'}))

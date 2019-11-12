@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, CashTransferForm, CashWithdrawalForm
 from .models import Transaction
 
 
@@ -64,8 +64,22 @@ def transactionHistory(request):
 
 
 def transferFunds(request):
-    return render(request, 'transferFunds.html', {})
+    if request.method == 'POST':
+        form = CashTransferForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('myAccount.html')
+    else:
+        form = CashTransferForm()
+
+    return render(request, 'transferFunds.html', {'form': form})
 
 
 def withdrawFunds(request):
-    return render(request, 'withdrawFunds.html', {})
+    if request.method == 'POST':
+        form = CashWithdrawalForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('myAccount.html')
+    else:
+        form = CashWithdrawalForm()
+
+    return render(request, 'withdrawFunds.html', {'form': form})
