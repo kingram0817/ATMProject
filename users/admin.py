@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import SignUpForm, editForm
-from .models import CustomUser
+from .models import CustomUser, Transaction
 
 
 class CustomUserAdmin(UserAdmin):

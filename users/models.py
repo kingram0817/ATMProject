@@ -3,7 +3,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    accountNumber = models.CharField(max_length=16, primary_key=True)
+    accountNumber = models.CharField(max_length=16, default="12")
     username = models.CharField(max_length=50, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, default='')
