@@ -5,10 +5,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>About Us</title>
+    <style>
+        .atm-title {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-about page
+{% if user.is_authenticated %}
+    <div class="atm-title">About Us</div>
+    <br/><br/>
+    <div class="atm-title">Locations</div>
+
+
+
+    <p>{{ all_locations }}</p>
+
+{% endif %}
 </body>
 </html>
 {% endblock %}

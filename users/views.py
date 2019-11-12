@@ -3,20 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
 from .forms import SignUpForm, editForm
-from .models import Transaction, ATM_Card
-
-
-def home(request):
-    return render(request, 'home.html', {})
-
-
-def about(request):
-    return render(request, 'about.html', {})
-
-
-def myAccount(request):
-    accountN = ATM_Card.accountNumber
-    return render(request, 'myAccount.html', {'accountN': accountN})
+from .models import Transaction, ATM_Card, CashTransfer, CashWithdrawal, ATMachine
 
 
 def loginUser(request):
@@ -75,14 +62,35 @@ def editAccount(request):
     return render(request, 'editAccount.html', context)
 
 
+def home(request):
+    return render(request, 'home.html', {})
+
+
+def about(request):
+    all_locations = ATMachine.location
+    return render(request, 'about.html', {'all_locations': all_locations})
+
+
+def myAccount(request):
+    accountN = ATM_Card.accountNumber
+    return render(request, 'myAccount.html', {'accountN': accountN})
+
+
 def transactionHistory(request):
     allTransactionHistory = Transaction.objects.all
     return render(request, 'transactionHistory.html', {'allTransactionHistory': allTransactionHistory})
 
 
 def transferFunds(request):
-    return render(request, 'transferFunds.html', {})
+    beneAccNumber = CashTransfer.beneficiaryAccountNumber
+    beneName = CashTransfer.beneficiaryName
+    amountTrans = CashTransfer.amountTransferred
+    return render(request, 'transferFunds.html', {'beneAccNumber': beneAccNumber, 'beneName': beneName, 'amountTrans': amountTrans})
 
 
 def withdrawFunds(request):
-    return render(request, 'withdrawFunds.html', {})
+    cashWithdrawalAmount = CashWithdrawal.amountTransferred
+    cashWithdrawalDenom = CashWithdrawal.denomination
+    cashWithdrawalBalance = CashWithdrawal.currentBalance
+    return render(request, 'withdrawFunds.html', {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom, 'cashWithdrawalBalance': cashWithdrawalBalance})
+

@@ -18,9 +18,9 @@
 <br/><br/>
 {% if user.is_authenticated %}
 
-    <p>Amount Transferred: {{ CashWithdrawal.amountTransferred }}</p>
-    <p>Denomination: {{ CashWithdrawal.denomination }}</p>
-    <p>Current Balance: {{ CashWithdrawal.currentBalance }}</p>
+    <p>Amount Transferred: {{ cashWithdrawalAmount }}</p>
+    <p>Denomination: {{ cashWithdrawalDenom }}</p>
+    <p>Current Balance: {{ cashWithdrawalBalance }}</p>
 
 {% endif %}
 </body>

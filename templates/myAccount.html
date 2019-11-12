@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<div class="atm-title">Account Details</div>
+ <div class="atm-title">Account Details</div>
 <br/><br/>
 {% if user.is_authenticated %}
 
@@ -25,7 +25,7 @@
     <p>State: {{ user.state }}</p>
     <p>Zip code: {{ user.zipCode }}</p>
     <p>Phone Number: {{ user.phoneNumber }}</p>
-    <p>Account Number: {{ accountN }}</p>
+    <p>Account Number: {{ user.accountNumber }}</p>
 
 
 

@@ -18,9 +18,9 @@
 <br/><br/>
 {% if user.is_authenticated %}
 
-    <p>Beneficiary Account Number: {{ CashTransfer.beneficiaryAccountNumber }}</p>
-    <p>Beneficiary Name: {{ CashTransfer.beneficiaryName }}</p>
-    <p>Amount Transferred: {{ CashTransfer.amountTransferred }}</p>
+    <p>Beneficiary Account Number: {{ beneAccNumber }}</p>
+    <p>Beneficiary Name: {{ beneName }}</p>
+    <p>Amount Transferred: {{ amountTrans }}</p>
 
 {% endif %}
 </body>
