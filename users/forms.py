@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser, Transaction, ATM_Card
+import random
 
 
 def setTransactions():
@@ -8,12 +9,8 @@ def setTransactions():
 
 
 def setAccountNumber():
-    minNumber = 000000000000
-    maxNumber = 999999999999
-
-    if minNumber < maxNumber:
-        minNumber = minNumber + 1
-        ATM_Card.accountNumber = '4450' + str(minNumber)
+    ATM_Card.accountNumber = random.randint(1, 9999999999)
+    CustomUser.accountNumber = ATM_Card.accountNumber
 
 
 class SignUpForm(UserCreationForm):
@@ -65,6 +62,10 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ""
         self.fields[
             'password2'].help_text = '<div class="form-text text-muted"><small>Enter the same password as before, for verification.</small></div>'
+
+
+class editForm(UserChangeForm):
+    pass
 
 # class CashTransferForm(models.Model):
 # beneficiaryAccountNumber = forms.CharField(max_length=50)

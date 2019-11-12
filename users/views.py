@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, editForm
 from .models import Transaction, ATM_Card
 
 
@@ -27,7 +27,7 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have successfully Logged in!')
-            return redirect('home')
+            return redirect('myAccount')
         else:
             messages.success(request, 'Error logging in - Please try again.')
             return redirect('login')
@@ -51,11 +51,28 @@ def registerUser(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, 'Thank you for registering')
-            return redirect('home')
+            return redirect('myAccount')
     else:
         form = SignUpForm()
     context = {'form': form}
     return render(request, 'register.html', context)
+
+
+def editAccount(request):
+    if request.method == 'POST':
+        form = editForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, 'You have successfully edited your account. ')
+            return redirect('myAccount')
+    else:
+        form = editForm()
+    context = {'form': form}
+    return render(request, 'editAccount.html', context)
 
 
 def transactionHistory(request):
