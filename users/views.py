@@ -102,12 +102,11 @@ def transferFunds(request):
     if request.method == 'POST':
         form = CashTransferForm(request.POST)
         if form.is_valid():
-            cashWithdrawalAmount = CashWithdrawal.amountTransferred
-            cashWithdrawalDenom = CashWithdrawal.denomination
-            cashWithdrawalBalance = CashWithdrawal.currentBalance
-            return render(request, 'withdrawFunds.html',
-                          {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom,
-                           'cashWithdrawalBalance': cashWithdrawalBalance})
+            beneAccNumber = CashTransfer.beneficiaryAccountNumber
+            beneName = CashTransfer.beneficiaryName
+            amountTrans = CashTransfer.amountTransferred
+            return render(request, 'transferFunds.html',
+                          {'beneAccNumber': beneAccNumber, 'beneName': beneName, 'amountTrans': amountTrans})
     else:
         form = CashTransferForm()
 
@@ -118,7 +117,12 @@ def withdrawFunds(request):
     if request.method == 'POST':
         form = CashWithdrawalForm(request.POST)
         if form.is_valid():
-            return redirect('myAccount.html')
+            cashWithdrawalAmount = CashWithdrawal.amountTransferred
+            cashWithdrawalDenom = CashWithdrawal.denomination
+            cashWithdrawalBalance = CashWithdrawal.currentBalance
+            return render(request, 'withdrawFunds.html',
+                          {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom,
+                           'cashWithdrawalBalance': cashWithdrawalBalance})
     else:
         form = CashWithdrawalForm()
 
