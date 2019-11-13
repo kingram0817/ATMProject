@@ -10,12 +10,20 @@
     <style>
         .atm-title {
             font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 <div class="atm-title">Withdraw Funds</div>
-<br/><br/>
+
+<div class="col-md-6 offset-md-3">
+    <form action="{% url 'withdrawFunds' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
+</div>
 {% if user.is_authenticated %}
 
     <p>Amount Transferred: {{ cashWithdrawalAmount }}</p>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, editForm
+from .forms import SignUpForm, editForm, CashTransferForm, CashWithdrawalForm
 from .models import Transaction, ATM_Card, CashTransfer, CashWithdrawal, ATMachine
 
 
@@ -94,3 +94,23 @@ def withdrawFunds(request):
     cashWithdrawalBalance = CashWithdrawal.currentBalance
     return render(request, 'withdrawFunds.html', {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom, 'cashWithdrawalBalance': cashWithdrawalBalance})
 
+def transferFunds(request):
+    if request.method == 'POST':
+        form = CashTransferForm(request.POST)
+        if form.is_valid():
+            return redirect('myAccount.html')
+    else:
+        form = CashTransferForm()
+
+    return render(request, 'transferFunds.html', {'form': form})
+
+
+def withdrawFunds(request):
+    if request.method == 'POST':
+        form = CashWithdrawalForm(request.POST)
+        if form.is_valid():
+            return redirect('myAccount.html')
+    else:
+        form = CashWithdrawalForm()
+
+    return render(request, 'withdrawFunds.html', {'form': form})
