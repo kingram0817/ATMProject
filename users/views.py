@@ -81,18 +81,22 @@ def transactionHistory(request):
     return render(request, 'transactionHistory.html', {'allTransactionHistory': allTransactionHistory})
 
 
-def transferFunds(request):
+def transferFunds1(request):
     beneAccNumber = CashTransfer.beneficiaryAccountNumber
     beneName = CashTransfer.beneficiaryName
     amountTrans = CashTransfer.amountTransferred
-    return render(request, 'transferFunds.html', {'beneAccNumber': beneAccNumber, 'beneName': beneName, 'amountTrans': amountTrans})
+    return render(request, 'transferFunds.html',
+                  {'beneAccNumber': beneAccNumber, 'beneName': beneName, 'amountTrans': amountTrans})
 
 
-def withdrawFunds(request):
+def withdrawFunds1(request):
     cashWithdrawalAmount = CashWithdrawal.amountTransferred
     cashWithdrawalDenom = CashWithdrawal.denomination
     cashWithdrawalBalance = CashWithdrawal.currentBalance
-    return render(request, 'withdrawFunds.html', {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom, 'cashWithdrawalBalance': cashWithdrawalBalance})
+    return render(request, 'withdrawFunds.html',
+                  {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom,
+                   'cashWithdrawalBalance': cashWithdrawalBalance})
+
 
 def transferFunds(request):
     if request.method == 'POST':
