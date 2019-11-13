@@ -102,7 +102,12 @@ def transferFunds(request):
     if request.method == 'POST':
         form = CashTransferForm(request.POST)
         if form.is_valid():
-            return redirect('myAccount.html')
+            cashWithdrawalAmount = CashWithdrawal.amountTransferred
+            cashWithdrawalDenom = CashWithdrawal.denomination
+            cashWithdrawalBalance = CashWithdrawal.currentBalance
+            return render(request, 'withdrawFunds.html',
+                          {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom,
+                           'cashWithdrawalBalance': cashWithdrawalBalance})
     else:
         form = CashTransferForm()
 
