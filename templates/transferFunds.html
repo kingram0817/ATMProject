@@ -17,8 +17,6 @@
 <body>
 <div class="atm-title">Transfer Funds</div>
 <br/><br/>
-{% if user.is_authenticated %}
-
     <div class="col-md-6 offset-md-3">
         <form action="{% url 'transferFunds' %}" method="post">
             {% csrf_token %}
@@ -27,13 +25,6 @@
         </form>
     </div>
 
-
-
-    <p>Beneficiary Account Number: {{ beneAccNumber }}</p>
-    <p>Beneficiary Name: {{ beneName }}</p>
-    <p>Amount Transferred: {{ amountTrans }}</p>
-
-{% endif %}
 </body>
 </html>
 {% endblock %}
