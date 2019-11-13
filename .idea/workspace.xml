@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0c34b94-bf0a-4998-afff-e53c24b6c92b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/users/migrations/0008_auto_20191112_1657.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0009_auto_20191112_1659.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0010_auto_20191112_1804.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0011_remove_customuser_accountnumber.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0012_customuser_accountnumber.py" beforeDir="false" />
-    </list>
+    <list default="true" id="c0c34b94-bf0a-4998-afff-e53c24b6c92b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
