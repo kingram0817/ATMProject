@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0c34b94-bf0a-4998-afff-e53c24b6c92b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/atmProject1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/atmProject1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/transferFunds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/transferFunds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/withdrawFunds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/withdrawFunds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +111,8 @@
       <workItem from="1573500871707" duration="3033000" />
       <workItem from="1573506159436" duration="937000" />
       <workItem from="1573655295647" duration="1216000" />
+      <workItem from="1573680037104" duration="620000" />
+      <workItem from="1573681779410" duration="2294000" />
     </task>
     <servers />
   </component>

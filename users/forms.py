@@ -14,7 +14,7 @@ def setAccountNumber():
 
 
 class SignUpForm(UserCreationForm):
-    accountNumber = forms.CharField(max_length=16)
+   # accountNumber = forms.CharField(max_length=16)
     setAccountNumber()
     username = forms.CharField(max_length=50, label="",
                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Username'}))

@@ -19,11 +19,20 @@ class CustomUser(AbstractUser):
 
 
 class Transaction(models.Model):
+    DENIED = 'DE'
+    SUCCESSFUL = 'SU'
+
+    STATUS_CHOICES = [
+        (DENIED, 'Denied'),
+        (SUCCESSFUL, 'Successful'),
+
+    ]
+
     transactionId = models.AutoField(primary_key=True)
     ATMCardNumber = models.ForeignKey('ATM_Card', on_delete=models.CASCADE)
     date = models.DateField(max_length=50, default='')
     ATMachineUID = models.ForeignKey('ATMachine', on_delete=models.CASCADE)
-    status = models.CharField(max_length=50, default='')
+    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default=DENIED)
     responseCode = models.CharField(max_length=50, default='')
     transactionType = models.CharField(max_length=50, default='')
 
