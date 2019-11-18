@@ -67,12 +67,12 @@ def home(request):
 
 
 def about(request):
-    all_locations = ATMachine.location
+    all_locations = ATMachine.objects.all()
     return render(request, 'about.html', {'all_locations': all_locations})
 
 
 def addCard(request):
-    pass
+    return render(request, 'addCard.html', {})
 
 
 def myAccount(request):

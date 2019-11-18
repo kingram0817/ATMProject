@@ -20,7 +20,7 @@ class CustomUser(AbstractUser):
     phoneNumber = models.CharField(max_length=10, default='1112223333')
 
     def __str__(self):
-        return str(self.accountNumber)
+        return str(self.username)
 
 
 class Transaction(models.Model):
@@ -65,6 +65,8 @@ class ATM_Card(models.Model):
     phoneNumber = models.CharField(max_length=10, default='')
     cardStatus = models.BooleanField(default=True)
     twoFactorAuthenticationStatus = models.BooleanField(default=True)
+    def __str__(self):
+        return str(self.atmCardNumber)
 
 
 class PhoneChange(models.Model):
@@ -110,6 +112,9 @@ class ATMachine(models.Model):
     lastRefillDate = models.DateField(max_length=50, default='')
     # TODO:Test nextMaintenanceDate
     nextMaintenanceDate = models.DateField(max_length=50, default='')
+
+    def __str__(self):
+        return str(self.ATMachineUID)
 
 
 class AccountExtension(models.Model):

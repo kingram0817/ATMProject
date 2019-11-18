@@ -16,12 +16,25 @@
 <body>
 {% if user.is_authenticated %}
     <div class="atm-title">About Us</div>
-    <br/><br/>
+    <br/>
+    <p style="text-align: center;">We can barely get this to work, your money is safe with us!</p>
+    <br/>
     <div class="atm-title">Locations</div>
+    <br/>
+             <table class="table table-bordered">
+
+                {% for locations in all_locations %}
+                    <tr>
+                        <td style="text-align: center;">{{ locations.location }}</td>
+
+                    </tr>
+                {% endfor %}
+             </table>
 
 
 
-    <p>{{ all_locations }}</p>
+
+
 
 {% endif %}
 </body>
