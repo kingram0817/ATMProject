@@ -4,18 +4,11 @@ from .models import CustomUser, Transaction, ATM_Card
 import random
 
 
-def setTransactions():
-    Transaction.amount = '$1000'
-
-
-def setAccountNumber():
-    ATM_Card.accountNumber = random.randint(1, 9999999999)
-    CustomUser.accountNumber = ATM_Card.accountNumber
+def setAccountNum():
+    CustomUser.accountNumber = random.randint(1, 999999)
 
 
 class SignUpForm(UserCreationForm):
-    accountNumber = forms.CharField(max_length=16)
-    setAccountNumber()
     username = forms.CharField(max_length=50, label="",
                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Username'}))
     first_name = forms.CharField(max_length=50, label="", widget=forms.TextInput(
@@ -34,6 +27,7 @@ class SignUpForm(UserCreationForm):
                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Zip'}))
     phoneNumber = forms.CharField(max_length=10, label="", widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}))
+    setAccountNum()
 
     class Meta:
         model = CustomUser
@@ -84,3 +78,11 @@ class CashWithdrawalForm(forms.Form):
         attrs={'class': 'form-control', 'placeholder': 'Denomination', 'style': 'margin-bottom:15px;'}))
     currentBalance = forms.CharField(label='', max_length=50, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'Current Balance', 'style': 'margin-bottom:15px;'}))
+
+# class AddNewCard(forms.Form):
+#    amountTransferred = forms.CharField(label='', max_length=50, widget=forms.TextInput(
+#        attrs={'class': 'form-control', 'placeholder': 'Transfer Amount', 'style': 'margin-bottom:15px;'}))
+#    denomination = forms.CharField(label='', max_length=50, widget=forms.TextInput(
+#        attrs={'class': 'form-control', 'placeholder': 'Denomination', 'style': 'margin-bottom:15px;'}))
+#    currentBalance = forms.CharField(label='', max_length=50, widget=forms.TextInput(
+#        attrs={'class': 'form-control', 'placeholder': 'Current Balance', 'style': 'margin-bottom:15px;'}))

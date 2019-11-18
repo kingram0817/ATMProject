@@ -9,6 +9,7 @@
     <style>
         .atm-title {
             font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
@@ -26,6 +27,18 @@
     <p>Zip code: {{ user.zipCode }}</p>
     <p>Phone Number: {{ user.phoneNumber }}</p>
     <p>Account Number: {{ user.accountNumber }}</p>
+
+    <br/>
+    <p>Account Number: {{ accountNumber }}</p>
+    <p>Current Card Number: {{ user.atmCard }}</p>
+    <p>Current Card Holders Name: {{ user.conCatName }}</p>
+    <p>Creation Date : {{ user.cardCreateDate }}</p>
+    <p>Expiration Date: {{ user.cardExpirDate }}</p>
+    <p>Card Holder Address: {{ user.conCatAddress }}</p>
+    <p>Card Holder Phone Number: {{ user.cardPhone }}</p>
+    <p>Card Status: {{ user.cardStatus }}</p>
+    <p>Two Factor Auth: {{ user.card2Factor }}</p>
+
 
 
 

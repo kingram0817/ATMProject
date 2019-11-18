@@ -24,13 +24,11 @@
         <input type="submit" value="Submit" class="btn btn-secondary">
     </form>
 </div>
-{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 
-    <p>Amount Transferred: {{ cashWithdrawalAmount }}</p>
-    <p>Denomination: {{ cashWithdrawalDenom }}</p>
-    <p>Current Balance: {{ cashWithdrawalBalance }}</p>
 
-{% endif %}
+
+    {% endif %}
 </body>
 </html>
 {% endblock %}

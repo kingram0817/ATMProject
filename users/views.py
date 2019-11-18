@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
 from .forms import SignUpForm, editForm, CashTransferForm, CashWithdrawalForm
-from .models import Transaction, ATM_Card, CashTransfer, CashWithdrawal, ATMachine
+from .models import Transaction, ATM_Card, CashTransfer, CashWithdrawal, ATMachine, CustomUser
 
 
 def loginUser(request):
@@ -71,9 +71,16 @@ def about(request):
     return render(request, 'about.html', {'all_locations': all_locations})
 
 
+def addCard(request):
+    pass
+
+
 def myAccount(request):
-    accountN = ATM_Card.accountNumber
-    return render(request, 'myAccount.html', {'accountN': accountN})
+    user = CustomUser.objects.get(accountNumber=request.user)
+    accountNumber = user.accountNumber
+    atmCard = ATM_Card.atmCardNumber
+
+    return render(request, 'myAccount.html', {'accountNumber': accountNumber, 'atmCard' : atmCard})
 
 
 def transactionHistory(request):
@@ -81,7 +88,7 @@ def transactionHistory(request):
     return render(request, 'transactionHistory.html', {'allTransactionHistory': allTransactionHistory})
 
 
-def transferFunds1(request):
+def transferFunds(request):
     beneAccNumber = CashTransfer.beneficiaryAccountNumber
     beneName = CashTransfer.beneficiaryName
     amountTrans = CashTransfer.amountTransferred
@@ -89,7 +96,7 @@ def transferFunds1(request):
                   {'beneAccNumber': beneAccNumber, 'beneName': beneName, 'amountTrans': amountTrans})
 
 
-def withdrawFunds1(request):
+def withdrawFunds(request):
     cashWithdrawalAmount = CashWithdrawal.amountTransferred
     cashWithdrawalDenom = CashWithdrawal.denomination
     cashWithdrawalBalance = CashWithdrawal.currentBalance
