@@ -76,11 +76,9 @@ def addCard(request):
 
 
 def myAccount(request):
-    user = CustomUser.objects.get(accountNumber=request.user)
-    accountNumber = user.accountNumber
-    atmCard = ATM_Card.atmCardNumber
+    atmCard = ATM_Card.objects.get()
 
-    return render(request, 'myAccount.html', {'accountNumber': accountNumber, 'atmCard' : atmCard})
+    return render(request, 'myAccount.html', {'atmCard': atmCard})
 
 
 def transactionHistory(request):
