@@ -5,23 +5,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Account</title>
+    <title>Edit Account Details</title>
+
     <style>
         .atm-title {
             font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
-<div class="atm-title">Edit Account</div>
-<br/><br/>
+<body>
+<div class="atm-title">Edit Account Details</div>
+<br/>
+<div class="col-md-6 offset-md-3">
+    <form method = "POST" action="{% url 'editAccount' %}">
+        {% csrf_token %}
 
-    {% if user.is_authenticated %}
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissable" role="alert">
+                    <button class="close" data-dismiss="alert">
+                        <small><sup>x</sup></small>
+                    </button>
+                <p>Your form has errors...</p>
+                {% for field in form %}
+                    {% if field.errors %}
+                        {{ field.errors }}
+                    {% endif %}
+
+                {% endfor %}
 
 
+            </div>
 
+        {% endif %}
+        {{ form.as_p }}
 
+        <input type="submit" value="Confirm" class="btn btn-secondary">
 
-    {% endif %}
+    </form>
+</div>
 </body>
 </html>
 {% endblock %}

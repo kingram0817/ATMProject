@@ -5,7 +5,8 @@ import random
 
 
 def setAccountNum():
-    CustomUser.accountNumber = random.randint(1, 999999)
+    ATM_Card.accountNumber = random.randint(1, 999999)
+    CustomUser.accountNumber = ATM_Card.accountNumber
 
 
 class SignUpForm(UserCreationForm):
@@ -27,7 +28,8 @@ class SignUpForm(UserCreationForm):
                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Zip'}))
     phoneNumber = forms.CharField(max_length=10, label="", widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}))
-    setAccountNum()
+
+    # setAccountNum()
 
     class Meta:
         model = CustomUser
@@ -59,7 +61,44 @@ class SignUpForm(UserCreationForm):
 
 
 class editForm(UserChangeForm):
-    pass
+    password = None
+    username = forms.CharField(max_length=50, label="",
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Username'}))
+    first_name = forms.CharField(max_length=50, label="", widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter First Name'}))
+    last_name = forms.CharField(max_length=50, label="", widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter Last Name'}))
+    email = forms.EmailField(label="", widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter Email Address'}))
+    address = forms.CharField(max_length=50, label="",
+                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Address'}))
+    city = forms.CharField(max_length=50, label="",
+                           widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter City'}))
+    state = forms.CharField(max_length=2, label="",
+                            widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter State'}))
+    zipCode = forms.CharField(max_length=5, label="",
+                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Zip'}))
+    phoneNumber = forms.CharField(max_length=10, label="", widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter Phone Number'}))
+    ATM_Card.pin = forms.CharField(max_length=4, label="", widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter New Pin'}))
+
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'first_name', 'last_name', 'email', 'address', 'city', 'state',
+                  'zipCode', 'phoneNumber',)
+
+    def __init__(self, *args, **kwargs):
+        super(editForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields[
+            'username'].help_text = '<div class="form-text text-muted"><small>Required. 150 characters or fewer.' \
+                                    ' Letters, digits and @/./+/-/_ only</small></div>'
+
+
+class editPinNumber(forms.Form):
+    ATM_Card.pin = forms.CharField(label='', max_length=4, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter New Pin Number', 'style': 'margin-bottom:15px;'}))
 
 
 class CashTransferForm(forms.Form):

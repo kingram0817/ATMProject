@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transfer Funds</title>
+    <title>Edit Pin</title>
 
     <style>
         .atm-title {
@@ -15,12 +15,12 @@
     </style>
 </head>
 <body>
-<div class="atm-title">Transfer Funds</div>
+<div class="atm-title">Edit Pin</div>
 <br/><br/>
     {% if user.is_authenticated %}
 
         <div class="col-md-6 offset-md-3">
-            <form action="{% url 'transferFunds' %}" method="post">
+            <form action="{% url 'editPin' %}" method="post">
                 {% csrf_token %}
                 {{ form }}
                 <input type="submit" value="Submit" class="btn btn-secondary">

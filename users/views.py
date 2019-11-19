@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import messages
-from .forms import SignUpForm, editForm, CashTransferForm, CashWithdrawalForm
-from .models import Transaction, ATM_Card, CashTransfer, CashWithdrawal, ATMachine, CustomUser
+from .forms import SignUpForm, editForm, CashTransferForm, CashWithdrawalForm, editPinNumber
+from .models import Transaction, ATM_Card, CashTransfer, CashWithdrawal, ATMachine, CustomUser, AccountExtension
 
 
 def loginUser(request):
@@ -45,16 +45,14 @@ def registerUser(request):
     return render(request, 'register.html', context)
 
 
-def editAccount(request):
+def editAccount(request, userID):
     if request.method == 'POST':
+        userData = CustomUser.objects.get(pk=userID)
         form = editForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            messages.success(request, 'You have successfully edited your account. ')
+
+            messages.success(request, 'Thank you for registering')
             return redirect('myAccount')
     else:
         form = editForm()
@@ -64,6 +62,10 @@ def editAccount(request):
 
 def home(request):
     return render(request, 'home.html', {})
+
+
+def balanceEnquiry(request):
+    return render(request, 'balanceEnquiry.html', {})
 
 
 def about(request):
@@ -77,7 +79,8 @@ def addCard(request):
 
 def myAccount(request):
     atmCard = ATM_Card.objects.get()
-
+    # AccExt = AccountExtension.objects.get()
+    # accountBalance = AccExt.balance
     return render(request, 'myAccount.html', {'atmCard': atmCard})
 
 
@@ -86,21 +89,41 @@ def transactionHistory(request):
     return render(request, 'transactionHistory.html', {'allTransactionHistory': allTransactionHistory})
 
 
+def editPin(request):
+    cardInfo = ATM_Card.objects.get()
+    currentPin = cardInfo.pin
+
+    if request.method == 'POST':
+        form = editPinNumber(request.POST)
+        if form.is_valid():
+            messages.success(request, 'Edited Pin Successfully ')
+            return redirect('myAccount.html')
+
+    else:
+        form = editPinNumber()
+
+    return render(request, 'editPin.html', {'form': form})
+
+
+def tFunds(request):
+    allTransferItems = CashTransfer.objects.all()
+    return render(request, 'transferFunds.html', {'allTransferItems': allTransferItems})
+
+
+def wFunds(request):
+    allWithdrawItems = CashWithdrawal.objects.all()
+    return render(request, 'withdrawFunds.html', {'allWithdrawItems': allWithdrawItems})
+
+
 def transferFunds(request):
-    beneAccNumber = CashTransfer.beneficiaryAccountNumber
-    beneName = CashTransfer.beneficiaryName
-    amountTrans = CashTransfer.amountTransferred
-    return render(request, 'transferFunds.html',
-                  {'beneAccNumber': beneAccNumber, 'beneName': beneName, 'amountTrans': amountTrans})
+    if request.method == 'POST':
+        form = CashTransferForm(request.POST)
+        if form.is_valid():
+            return redirect('myAccount.html')
+    else:
+        form = CashTransferForm()
 
-
-def withdrawFunds(request):
-    cashWithdrawalAmount = CashWithdrawal.amountTransferred
-    cashWithdrawalDenom = CashWithdrawal.denomination
-    cashWithdrawalBalance = CashWithdrawal.currentBalance
-    return render(request, 'withdrawFunds.html',
-                  {'cashWithdrawalAmount': cashWithdrawalAmount, 'cashWithdrawalDenom': cashWithdrawalDenom,
-                   'cashWithdrawalBalance': cashWithdrawalBalance})
+    return render(request, 'transferFunds.html', {'form': form})
 
 
 def transferFunds(request):

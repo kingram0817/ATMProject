@@ -13,6 +13,8 @@ urlpatterns = [
     path('transactionHistory.html', views.transactionHistory, name="transactionHistory"),
     path('transferFunds.html', views.transferFunds, name="transferFunds"),
     path('withdrawFunds.html', views.withdrawFunds, name="withdrawFunds"),
-    path('editAccount.html', views.editAccount, name="editAccount"),
+    path('editAccount', views.editAccount, name="editAccount"),
     path('addCard.html', views.addCard, name="addCard"),
+    path('balanceEnquiry.html', views.balanceEnquiry, name="balanceEnquiry"),
+    path('editPin.html', views.editPin, name="editPin"),
 ]

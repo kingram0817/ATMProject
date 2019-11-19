@@ -20,7 +20,7 @@
     {% if user.is_authenticated %}
 
         <div class="col-md-6 offset-md-3">
-            <form action="{% url 'transferFunds' %}" method="post">
+            <form action="{% url 'addCard' %}" method="post">
                 {% csrf_token %}
                 {{ form }}
                 <input type="submit" value="Submit" class="btn btn-secondary">
